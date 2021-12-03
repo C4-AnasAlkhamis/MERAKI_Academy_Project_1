@@ -1,11 +1,28 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+/** @format */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-body{background-color: blue;}
-.pictures div{
-    width: 200px;
-    height: 200px;
-    background-color: black;
+body {
+  background-color: blue;
+}
+.pictures {
+  width: 650px;
+  height: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.pictures div {
+  width: 200px;
+  height: 200px;
+  background-color: black;
+}
+.pictures div img {
+  width: 200px;
+  height: 200px;
 }
