@@ -4,3 +4,8 @@
     box-sizing: border-box;
 }
 body{background-color: blue;}
+.pictures div{
+    width: 200px;
+    height: 200px;
+    background-color: black;
+}
