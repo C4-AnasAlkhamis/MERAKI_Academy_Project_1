@@ -8,12 +8,15 @@
 
 body {
   background-color: rgba(41, 41, 197, 0.802);
+  overflow: hidden;
 }
 .container {
   display: flex;
   flex-direction: column;
 }
 .header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   color: rgb(52, 59, 73);
   padding: 20px;
 }
@@ -22,8 +25,7 @@ body {
 }
 
 .header h1 {
-  /* display: inline; */
-  justify-self: center;
+  justify-self: self-start;
   align-self: center;
 }
 .header img {
@@ -39,14 +41,14 @@ body {
   align-items: center;
 }
 
-.info {
+/* .info {
   display: flex;
   flex-direction: column;
   gap: 20px;
   justify-content: flex-start;
   align-items: flex-start;
   margin-right: 50px;
-}
+} */
 
 .start-btn {
   background-color: rgb(237, 196, 93);
@@ -61,27 +63,41 @@ body {
 }
 .pictures {
   width: 850px;
-  height: 850px;
+  height: 650px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
+  
 }
 .pictures div {
-  width: 200px;
-  height: 200px;
+  width: 210px;
+  height: 160px;
   background-color: rgb(237, 196, 93);
   background-image: url("./poki.png");
   background-position: center;
   background-size: cover;
   flex-wrap: wrap;
   border-radius: 15px;
+  transition: transform 1s;
 }
+/* .pictures div:hover{
+  transform: rotateY(180deg);
+} */
 .pictures div img {
-  width: 200px;
-  height: 200px;
+  width: 210px;
+  height: 160px;
   display: none;
+  border-radius: 15px;
+  /* transform: rotateY(180deg); */
 }
+.onClick{
+  transform: rotateY(180deg);
 
+}
+.poki{
+  transform: rotateY(180deg);
+
+}
 .score {
   display: flex;
   flex-direction: column;

@@ -20,7 +20,7 @@ const starting = () => {
   ComparingItems();
   notCorrect = 0;
   correct = 0;
-  timeSet(61);
+  timeSet(60);
   setTimeout(() => {
     start.style.display = "none";
   }, 200);
@@ -28,6 +28,7 @@ const starting = () => {
 const gameStop = () => {
   start.style.display = "unset";
   const pictures = document.querySelectorAll(".pictures div");
+  timer.innerText = '0'
   cooldown = 0;
   correct = 0;
   notCorrect = 0;
@@ -41,7 +42,9 @@ const popUp = () => {
     setTimeout(() => {
       starting();
     }, 500);
-  } else gameStop();
+  } else {
+    gameStop();
+  }
 };
 
 start.addEventListener("click", starting);
@@ -85,7 +88,7 @@ const ComparingItems = () => {
         if (correct === 8) {
           setTimeout(() => {
             popUp();
-          }, 500);
+          }, 1000);
         }
         onClickimg.splice(0, 2);
         const onTarget = document.querySelectorAll(".onClick");
@@ -119,13 +122,14 @@ const udate = () => {
 };
 
 const timeSet = (time) => {
+  cooldown++;
   if (time === 0) {
     return time + popUp();
   } else {
     return setTimeout(() => {
       timer.innerText = cooldown;
       timeSet(time - 1);
-      cooldown++;
+      // cooldown++;
     }, 1000);
   }
 };
