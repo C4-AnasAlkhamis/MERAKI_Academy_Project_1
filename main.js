@@ -4,10 +4,10 @@ const pictures = document.querySelectorAll(".pictures div");
 const img = document.createElement("img");
 const imgs = document.querySelectorAll(".pictures div img");
 const poki = document.querySelectorAll(".poki");
-const rightMove = document.querySelector(".right spam");
-const wrongMove = document.querySelector(".wrong spam");
-const score = document.querySelector(".score spam");
-const timer = document.querySelector(".timer spam");
+const rightMove = document.querySelector(".right span");
+const wrongMove = document.querySelector(".wrong span");
+const score = document.querySelector(".score span");
+const timer = document.querySelector(".timer span");
 const start = document.querySelector(".start-btn");
 //  function check the Image
 const onClickimg = [];

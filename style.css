@@ -7,16 +7,20 @@
 }
 
 body {
-  background-color: blue;
+  background-color: rgba(41, 41, 197, 0.802);
 }
 .container {
   display: flex;
   flex-direction: column;
 }
 .header {
-  display: flex;
-  column-gap: 41%;
+  color: rgb(52, 59, 73);
+  padding: 20px;
 }
+.header span {
+  color: rgb(237, 196, 93);
+}
+
 .header h1 {
   /* display: inline; */
   justify-self: center;
@@ -28,10 +32,7 @@ body {
   border-radius: 50%;
   margin: 20px;
 }
-.pictures {
-  display: grid;
-  grid-template-rows: 1fr 3fr;
-}
+
 .games {
   display: flex;
   justify-content: center;
@@ -46,10 +47,9 @@ body {
   align-items: flex-start;
   margin-right: 50px;
 }
-.info p {
-  width: 200px;
-}
+
 .start-btn {
+  background-color: rgb(237, 196, 93);
   width: 500px;
   height: 500px;
   padding: 10px;
@@ -69,21 +69,18 @@ body {
 .pictures div {
   width: 200px;
   height: 200px;
-  background-color: rgb(128, 113, 113);
+  background-color: rgb(237, 196, 93);
+  background-image: url("./poki.png");
+  background-position: center;
+  background-size: cover;
   flex-wrap: wrap;
   border-radius: 15px;
-  /* transform-style: preserve-3d; */
 }
 .pictures div img {
   width: 200px;
   height: 200px;
   display: none;
 }
-/* .flipCard {
-  transform: rotateY(180deg);
-  border-radius: 5px;
-  position: absolute;
-} */
 
 .score {
   display: flex;
@@ -94,9 +91,9 @@ body {
   margin-left: 100px;
 }
 .score h3 {
-  border: 3px solid white;
   border-radius: 30px;
   padding: 30px 50px 30px 10px;
-  color: aliceblue;
-  background-color: rgb(124, 121, 117);
+  color: rgb(52, 59, 73);
+  background-color: rgb(237, 196, 93);
+  font-size: 30px;
 }
