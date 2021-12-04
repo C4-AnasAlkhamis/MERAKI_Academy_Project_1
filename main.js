@@ -18,6 +18,8 @@ let cooldown = 0;
 const starting = () => {
   enterTheContent();
   ComparingItems();
+  notCorrect = 0;
+  correct = 0;
   timeSet(61);
   setTimeout(() => {
     start.style.display = "none";
