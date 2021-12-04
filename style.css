@@ -13,15 +13,14 @@ body {
   display: flex;
   flex-direction: column;
 }
-.header{
-  display:flex;
+.header {
+  display: flex;
   column-gap: 41%;
 }
 .header h1 {
   /* display: inline; */
   justify-self: center;
-  align-self:center;
-
+  align-self: center;
 }
 .header img {
   width: 150px;
@@ -33,12 +32,13 @@ body {
   display: grid;
   grid-template-rows: 1fr 3fr;
 }
-.games{
+.games {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.info{
+
+.info {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -46,40 +46,47 @@ body {
   align-items: flex-start;
   margin-right: 50px;
 }
-.info p{
+.info p {
   width: 200px;
 }
-.start-btn{
-  width: 100px;
-  height: 100px;
+.start-btn {
+  width: 500px;
+  height: 500px;
   padding: 10px;
   border-radius: 50%;
+  font-size: 50px;
 }
-.start-btn:hover{
+.start-btn:hover {
   cursor: pointer;
 }
 .pictures {
- width: 850px;
- height: 850px;
- display: grid;
- grid-template-columns: repeat(4,1fr);
- grid-template-rows: repeat(4,1fr);
-
-} 
+  width: 850px;
+  height: 850px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
 .pictures div {
   width: 200px;
   height: 200px;
   background-color: black;
   flex-wrap: wrap;
-
+  position: relative;
+  transition: transform 0.8;
+  /* transform-style: preserve-3d; */
 }
 .pictures div img {
   width: 200px;
   height: 200px;
-  display:none;
+  display: none;
+}
+.flipCard {
+  transform: rotateY(180deg);
+  border-radius: 5px;
+  position: absolute;
 }
 
-.score{
+.score {
   display: flex;
   justify-content: center;
   align-items: center;
