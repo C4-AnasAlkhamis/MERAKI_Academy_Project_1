@@ -9,9 +9,19 @@ body {
   background-color: blue;
 }
 .pictures {
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+}
+.games{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pictures {
   width: 650px;
   height: 650px;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;

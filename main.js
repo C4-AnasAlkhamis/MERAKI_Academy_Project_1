@@ -8,13 +8,24 @@ const rightMove = document.querySelector(".right spam");
 const wrongMove = document.querySelector(".wrong spam");
 const score = document.querySelector(".score spam");
 const timer = document.querySelector(".timer spam");
-
+const start = document.querySelector('.start-btn')
 //  function check the Image
 
 const onClickimg = [];
 let correct = 0;
 let notCorrect = 0;
 let cooldown = 0;
+const starting = () => {
+  removeElements();
+  timeSet(60)
+  if(!pictures){
+    console.log('hi');
+  }
+}
+start.addEventListener('click',starting)
+
+
+
 const removeElements = () => {
   for (let i = 0; i < pictures.length; i++) {
     pictures[i].addEventListener("click", (e) => {
@@ -29,15 +40,18 @@ const removeElements = () => {
         onTarget.forEach((element) => {
           setTimeout(() => {
             element.remove();
-            udate()
+            udate();
           }, 500);
         });
       } else if (onClickimg[0] !== onClickimg[1] && onClickimg.length > 1) {
         notCorrect++;
+        pictures.forEach(element => {
+          element.classList = ''
+        });
         setTimeout(() => {
           imgs.forEach((element) => {
             element.style.display = "none";
-            udate()
+            udate();
           });
           onClickimg.splice(0, 2);
           e.target.classList = "";
@@ -46,10 +60,28 @@ const removeElements = () => {
     });
   }
 };
-removeElements();
+// removeElements();
+
+
 
 const udate = () => {
   rightMove.innerText = correct;
   wrongMove.innerText = notCorrect;
-}
+};
 
+const timeSet = (time) => {
+  
+  if (time === 0) {
+    return time;
+  } else {
+    return setTimeout(() => {
+      timer.innerText = cooldown
+      timeSet(time - 1);
+      cooldown++;
+    }, 1000);
+  }
+  
+};
+// if(removeElements()){
+//   timeSet()
+// }
