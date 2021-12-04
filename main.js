@@ -18,31 +18,29 @@ let cooldown = 0;
 const starting = () => {
   enterTheContent();
   ComparingItems();
-  timeSet(59);
+  timeSet(61);
   setTimeout(() => {
     start.style.display = "none";
   }, 200);
-
 };
 const gameStop = () => {
   start.style.display = "unset";
   const pictures = document.querySelectorAll(".pictures div");
-  cooldown = 0
-  correct = 0
-  notCorrect = 0
-  pictures.forEach(element => {
-    element.remove()
+  cooldown = 0;
+  correct = 0;
+  notCorrect = 0;
+  pictures.forEach((element) => {
+    element.remove();
   });
 };
-const popUp = ()=> {
-  if(confirm("Play again")){
-    gameStop()
+const popUp = () => {
+  gameStop();
+  if (confirm("Play again")) {
     setTimeout(() => {
-      starting()
+      starting();
     }, 500);
-  }
-  else gameStop()
-}
+  } else gameStop();
+};
 
 start.addEventListener("click", starting);
 const img_arr = [
@@ -82,11 +80,10 @@ const ComparingItems = () => {
       //if the first click === the second click or not
       if (onClickimg[0] === onClickimg[1]) {
         correct++;
-        if(correct === 8){
+        if (correct === 8) {
           setTimeout(() => {
-            popUp()
-          }, 1000);
-          
+            popUp();
+          }, 500);
         }
         onClickimg.splice(0, 2);
         const onTarget = document.querySelectorAll(".onClick");
@@ -94,7 +91,7 @@ const ComparingItems = () => {
           setTimeout(() => {
             element.style.visibility = "hidden";
             udate();
-          }, 1000);
+          }, 500);
         });
       } else if (onClickimg[0] !== onClickimg[1] && onClickimg.length > 1) {
         notCorrect++;
@@ -108,7 +105,7 @@ const ComparingItems = () => {
           });
           onClickimg.splice(0, 2);
           e.target.classList = "";
-        }, 1000);
+        }, 500);
       }
     });
   }
@@ -121,14 +118,12 @@ const udate = () => {
 
 const timeSet = (time) => {
   if (time === 0) {
-    time
-    return gameStop()
-  }else {
+    return time + popUp();
+  } else {
     return setTimeout(() => {
       timer.innerText = cooldown;
       timeSet(time - 1);
       cooldown++;
     }, 1000);
-
   }
 };
