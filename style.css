@@ -12,22 +12,12 @@ body {
 }
 .container {
   display: flex;
-  flex-direction: column;
 }
 .header {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  color: rgb(52, 59, 73);
-  padding: 20px;
-}
-.header span {
-  color: rgb(237, 196, 93);
+  display: flex;
+  justify-content: center;
 }
 
-.header h1 {
-  justify-self: self-start;
-  align-self: center;
-}
 .header img {
   width: 150px;
   height: 150px;
@@ -37,17 +27,10 @@ body {
 
 .games {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.btn {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-right: 50px;
+  gap: 30px;
 }
 
 .start-btn {
@@ -55,7 +38,7 @@ body {
   border: 3px solid rgba(240, 173, 4, 0.816);
   width: 500px;
   height: 500px;
-  padding: 10px;
+  /* padding: 10px; */
   border-radius: 50%;
   font-size: 50px;
 }
@@ -95,17 +78,24 @@ body {
 }
 .score {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  box-sizing: border-box;
+  border-radius: 50px;
+  background-color: rgb(225, 195, 156);
   justify-content: flex-start;
   align-items: flex-start;
   gap: 60px;
-  margin-left: 100px;
+  
+  visibility: hidden;
 }
 .score h3 {
-  border-radius: 30px;
   padding: 30px 50px 30px 10px;
   color: rgb(52, 59, 73);
-  background-color: rgb(237, 196, 93);
-  font-size: 30px;
+  font-size: 25px;
   visibility: hidden;
+  width: 200px;
+
+}
+.score h3 span{
+  width: 50px;
 }

@@ -10,6 +10,8 @@ const score = document.querySelector(".win_lise");
 const timer = document.querySelector(".timer span");
 const start = document.querySelector(".start-btn");
 const h3Elements = document.querySelectorAll(".score h3");
+const scoreElement = document.querySelector(".score");
+
 /////////////////
 const onClickimg = [];
 let correct = 0;
@@ -52,6 +54,8 @@ const starting = () => {
   h3Elements.forEach((element) => {
     element.style.visibility = "visible";
   });
+  score.innerHTML = `Score: <span> win: ${win} lose: ${lose}</span>`;
+  scoreElement.style.visibility = "visible";
   rightMove.innerText = "0";
   wrongMove.innerText = "0";
   getRandomArr(img_arr);
@@ -60,11 +64,10 @@ const starting = () => {
   notCorrect = 0;
   correct = 0;
   cooldown = 0;
-  // random_imgArr.splice(0, random_imgArr.length);
   timeSet(60);
   setTimeout(() => {
     start.style.display = "none";
-  }, 500);
+  }, 100);
 };
 start.addEventListener("click", starting);
 //funcEnd here-- stop the game
@@ -73,7 +76,6 @@ start.addEventListener("click", starting);
 const gameStop = () => {
   start.style.display = "unset";
   timer.innerText = "0";
-  // random_imgArr.splice(0, random_imgArr.length);
   const pictures = document.querySelectorAll(".pictures div");
   pictures.forEach((element) => {
     element.remove();
@@ -86,7 +88,6 @@ const popUp = () => {
   if (correct !== 8) {
     lose++;
   }
-  score.innerHTML = `<span> win: ${win} lose: ${lose}</span>`;
   start.innerText = "Play again";
   start.style.display = "unset";
   return gameStop();
