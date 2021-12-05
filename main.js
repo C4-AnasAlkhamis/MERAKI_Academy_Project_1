@@ -28,7 +28,7 @@ const starting = () => {
 const gameStop = () => {
   start.style.display = "unset";
   const pictures = document.querySelectorAll(".pictures div");
-  timer.innerText = '0'
+  timer.innerText = "0";
   cooldown = 0;
   correct = 0;
   notCorrect = 0;
@@ -79,9 +79,11 @@ const ComparingItems = () => {
   const imgs = document.querySelectorAll(".pictures div img");
   for (let i = 0; i < pictures.length; i++) {
     pictures[i].addEventListener("click", (e) => {
-      e.target.firstChild.style.display = "unset";
-      e.target.classList = "onClick";
       onClickimg.push(e.target.firstChild.src);
+      e.target.classList = "onClick";
+      setTimeout(() => {
+        e.target.firstChild.style.display = "unset";
+      }, 400);
       //if the first click === the second click or not
       if (onClickimg[0] === onClickimg[1]) {
         correct++;
@@ -91,18 +93,21 @@ const ComparingItems = () => {
           }, 1000);
         }
         onClickimg.splice(0, 2);
-        const onTarget = document.querySelectorAll(".onClick");
+        var onTarget = document.querySelectorAll(".onClick");
         onTarget.forEach((element) => {
           setTimeout(() => {
             element.style.visibility = "hidden";
             udate();
-          }, 500);
+          }, 800);
         });
       } else if (onClickimg[0] !== onClickimg[1] && onClickimg.length > 1) {
         notCorrect++;
-        pictures.forEach((element) => {
-          element.classList = "";
-        });
+        setTimeout(() => {
+          pictures.forEach((element) => {
+            element.classList = "";
+          });
+        }, 800);
+
         setTimeout(() => {
           imgs.forEach((element) => {
             element.style.display = "none";
@@ -110,7 +115,7 @@ const ComparingItems = () => {
           });
           onClickimg.splice(0, 2);
           e.target.classList = "";
-        }, 500);
+        }, 800);
       }
     });
   }

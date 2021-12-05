@@ -41,14 +41,14 @@ body {
   align-items: center;
 }
 
-/* .info {
+.info {
   display: flex;
   flex-direction: column;
   gap: 20px;
   justify-content: flex-start;
   align-items: flex-start;
   margin-right: 50px;
-} */
+}
 
 .start-btn {
   background-color: rgb(237, 196, 93);
@@ -78,7 +78,7 @@ body {
   background-size: cover;
   flex-wrap: wrap;
   border-radius: 15px;
-  transition: transform 1s;
+  transition: transform 0.8s;
 }
 /* .pictures div:hover{
   transform: rotateY(180deg);
