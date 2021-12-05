@@ -17,6 +17,7 @@ let notCorrect = 0;
 let cooldown = 0;
 let win = 0;
 let lose = 0;
+const random_imgArr = [];
 const img_arr = [
   "poki_2.png",
   "poki_1.png",
@@ -35,22 +36,35 @@ const img_arr = [
   "poki_5.png",
   "poki_4.png",
 ];
+// //funcStart here-- makeing an new arra weith random elements
+const getRandomArr = (array) => {
+  if (array.length === 0) {
+    return random_imgArr;
+  }
+  let ri = Math.floor(Math.random() * array.length);
+  random_imgArr.push(array[ri]);
+  array.splice(ri, 1);
+  return getRandomArr(array);
+  // //funcEnd here-- makeing an new arra weith random elements
+};
 // //funcStart here-- start the game
 const starting = () => {
   h3Elements.forEach((element) => {
     element.style.visibility = "visible";
   });
-  rightMove.innerText = '0'
-  wrongMove.innerText = '0'
+  rightMove.innerText = "0";
+  wrongMove.innerText = "0";
+  getRandomArr(img_arr);
   enterTheContent();
   ComparingItems();
   notCorrect = 0;
   correct = 0;
   cooldown = 0;
+  // random_imgArr.splice(0, random_imgArr.length);
   timeSet(60);
   setTimeout(() => {
     start.style.display = "none";
-  }, 200);
+  }, 500);
 };
 start.addEventListener("click", starting);
 //funcEnd here-- stop the game
@@ -58,8 +72,9 @@ start.addEventListener("click", starting);
 //funcStart here-- stop the game
 const gameStop = () => {
   start.style.display = "unset";
-  const pictures = document.querySelectorAll(".pictures div");
   timer.innerText = "0";
+  // random_imgArr.splice(0, random_imgArr.length);
+  const pictures = document.querySelectorAll(".pictures div");
   pictures.forEach((element) => {
     element.remove();
   });
@@ -80,7 +95,7 @@ const popUp = () => {
 
 //funcStart here-- Entering The Content of game
 const enterTheContent = () => {
-  img_arr.forEach((element) => {
+  random_imgArr.forEach((element) => {
     var parent = document.querySelector(".pictures");
     parent.innerHTML += `<div><img class="poki" src="./poki/${element}" alt=""></div>`;
   });
@@ -148,8 +163,8 @@ const update = () => {
 //funcStart here-- Time update and comparison
 const timeSet = (time) => {
   cooldown++;
-  if(correct === 8){
-    return time
+  if (correct === 8) {
+    return time;
   }
   if (time === 0) {
     return time + popUp();
