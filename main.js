@@ -13,6 +13,8 @@ const h3Elements = document.querySelectorAll(".score h3");
 const scoreElement = document.querySelector(".score");
 
 /////////////////
+console.log(window.localStorage);
+
 const onClickimg = [];
 let correct = 0;
 let notCorrect = 0;
@@ -64,7 +66,7 @@ const starting = () => {
   notCorrect = 0;
   correct = 0;
   cooldown = 0;
-  timeSet(60);
+  timeSet(3);
   setTimeout(() => {
     start.style.display = "none";
   }, 100);

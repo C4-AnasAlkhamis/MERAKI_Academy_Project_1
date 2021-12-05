@@ -28,9 +28,10 @@ body {
 }
 
 .header img {
-  width: 150px;
-  height: 150px;
+  width: 250px;
+  height: 200px;
   border-radius: 50%;
+  padding: 20px;
 }
 
 .games {
@@ -68,7 +69,7 @@ body {
   width: 210px;
   height: 160px;
   background-color: rgb(237, 196, 93);
-  background-image: url("./poki-1.jpg");
+  background-image: url("./poki/pokiBG-1.jpg");
   background-position: center;
   background-size: cover;
   flex-wrap: wrap;
