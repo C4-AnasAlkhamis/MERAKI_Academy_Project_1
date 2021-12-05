@@ -41,7 +41,7 @@ body {
   align-items: center;
 }
 
-.info {
+.btn {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -52,12 +52,14 @@ body {
 
 .start-btn {
   background-color: rgb(237, 196, 93);
+  border: 3px solid rgba(240, 173, 4, 0.816);
   width: 500px;
   height: 500px;
   padding: 10px;
   border-radius: 50%;
   font-size: 50px;
 }
+
 .start-btn:hover {
   cursor: pointer;
 }
@@ -67,36 +69,29 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  
 }
 .pictures div {
   width: 210px;
   height: 160px;
   background-color: rgb(237, 196, 93);
-  background-image: url("./poki.png");
+  background-image: url("./poki.jpg");
   background-position: center;
   background-size: cover;
   flex-wrap: wrap;
   border-radius: 15px;
   transition: transform 0.8s;
 }
-/* .pictures div:hover{
-  transform: rotateY(180deg);
-} */
 .pictures div img {
   width: 210px;
   height: 160px;
   display: none;
   border-radius: 15px;
-  /* transform: rotateY(180deg); */
 }
-.onClick{
+.onClick {
   transform: rotateY(180deg);
-
 }
-.poki{
+.poki {
   transform: rotateY(180deg);
-
 }
 .score {
   display: flex;
@@ -112,4 +107,5 @@ body {
   color: rgb(52, 59, 73);
   background-color: rgb(237, 196, 93);
   font-size: 30px;
+  visibility: hidden;
 }

@@ -6,48 +6,17 @@ const imgs = document.querySelectorAll(".pictures div img");
 const poki = document.querySelectorAll(".poki");
 const rightMove = document.querySelector(".right span");
 const wrongMove = document.querySelector(".wrong span");
-const score = document.querySelector(".score span");
+const score = document.querySelector(".win_lise");
 const timer = document.querySelector(".timer span");
 const start = document.querySelector(".start-btn");
-//  function check the Image
+const h3Elements = document.querySelectorAll(".score h3");
+/////////////////
 const onClickimg = [];
 let correct = 0;
 let notCorrect = 0;
 let cooldown = 0;
-// starting game function
-const starting = () => {
-  enterTheContent();
-  ComparingItems();
-  notCorrect = 0;
-  correct = 0;
-  timeSet(60);
-  setTimeout(() => {
-    start.style.display = "none";
-  }, 200);
-};
-const gameStop = () => {
-  start.style.display = "unset";
-  const pictures = document.querySelectorAll(".pictures div");
-  timer.innerText = "0";
-  cooldown = 0;
-  correct = 0;
-  notCorrect = 0;
-  pictures.forEach((element) => {
-    element.remove();
-  });
-};
-const popUp = () => {
-  gameStop();
-  if (confirm("Play again")) {
-    setTimeout(() => {
-      starting();
-    }, 500);
-  } else {
-    gameStop();
-  }
-};
-
-start.addEventListener("click", starting);
+let win = 0;
+let lose = 0;
 const img_arr = [
   "poki_2.png",
   "poki_1.png",
@@ -66,17 +35,63 @@ const img_arr = [
   "poki_5.png",
   "poki_4.png",
 ];
+// //funcStart here-- start the game
+const starting = () => {
+  h3Elements.forEach((element) => {
+    element.style.visibility = "visible";
+  });
+  rightMove.innerText = '0'
+  wrongMove.innerText = '0'
+  enterTheContent();
+  ComparingItems();
+  notCorrect = 0;
+  correct = 0;
+  cooldown = 0;
+  timeSet(60);
+  setTimeout(() => {
+    start.style.display = "none";
+  }, 200);
+};
+start.addEventListener("click", starting);
+//funcEnd here-- stop the game
 
+//funcStart here-- stop the game
+const gameStop = () => {
+  start.style.display = "unset";
+  const pictures = document.querySelectorAll(".pictures div");
+  timer.innerText = "0";
+  pictures.forEach((element) => {
+    element.remove();
+  });
+};
+//funcEnd here-- stop the game
+
+//funcStart here-- play again
+const popUp = () => {
+  if (correct !== 8) {
+    lose++;
+  }
+  score.innerHTML = `<span> win: ${win} lose: ${lose}</span>`;
+  start.innerText = "Play again";
+  start.style.display = "unset";
+  return gameStop();
+};
+//funcEnd here-- play again
+
+//funcStart here-- Entering The Content of game
 const enterTheContent = () => {
   img_arr.forEach((element) => {
     var parent = document.querySelector(".pictures");
     parent.innerHTML += `<div><img class="poki" src="./poki/${element}" alt=""></div>`;
   });
 };
-// Comparing items
+//funcEnd here-- Entering The Content of game
+
+//funcStart here-- Comparing items in the game
 const ComparingItems = () => {
   const pictures = document.querySelectorAll(".pictures div");
   const imgs = document.querySelectorAll(".pictures div img");
+
   for (let i = 0; i < pictures.length; i++) {
     pictures[i].addEventListener("click", (e) => {
       onClickimg.push(e.target.firstChild.src);
@@ -88,6 +103,7 @@ const ComparingItems = () => {
       if (onClickimg[0] === onClickimg[1]) {
         correct++;
         if (correct === 8) {
+          win++;
           setTimeout(() => {
             popUp();
           }, 1000);
@@ -97,7 +113,7 @@ const ComparingItems = () => {
         onTarget.forEach((element) => {
           setTimeout(() => {
             element.style.visibility = "hidden";
-            udate();
+            update();
           }, 800);
         });
       } else if (onClickimg[0] !== onClickimg[1] && onClickimg.length > 1) {
@@ -111,7 +127,7 @@ const ComparingItems = () => {
         setTimeout(() => {
           imgs.forEach((element) => {
             element.style.display = "none";
-            udate();
+            update();
           });
           onClickimg.splice(0, 2);
           e.target.classList = "";
@@ -120,21 +136,28 @@ const ComparingItems = () => {
     });
   }
 };
+//funcEnd here-- Comparing items in the game
 
-const udate = () => {
+//funcStart here-- update the moves
+const update = () => {
   rightMove.innerText = correct;
   wrongMove.innerText = notCorrect;
 };
+//funcEnd here-- update the moves
 
+//funcStart here-- Time update and comparison
 const timeSet = (time) => {
   cooldown++;
+  if(correct === 8){
+    return time
+  }
   if (time === 0) {
     return time + popUp();
   } else {
     return setTimeout(() => {
       timer.innerText = cooldown;
       timeSet(time - 1);
-      // cooldown++;
     }, 1000);
   }
 };
+//funcEnd here-- Time update and comparison
