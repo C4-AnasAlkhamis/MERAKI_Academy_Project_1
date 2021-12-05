@@ -12,17 +12,10 @@ const start = document.querySelector(".start-btn");
 const h3Elements = document.querySelectorAll(".score h3");
 const scoreElement = document.querySelector(".score");
 /////////////////
-if (window.closed !== false) {
-  lose = 0;
-  localStorage.lose = 0;
-}
-
 const onClickimg = [];
 let correct = 0;
 let notCorrect = 0;
 let cooldown = 0;
-let win = 0;
-let lose = 0;
 const random_imgArr = [];
 const img_arr = [
   "poki_2.png",
@@ -42,7 +35,10 @@ const img_arr = [
   "poki_5.png",
   "poki_4.png",
 ];
-// //funcStart here-- makeing an new arra weith random elements
+console.log(localStorage.lose);
+// funcStart here-- clear the localStorage
+
+//funcStart here-- makeing an new arra weith random elements
 const getRandomArr = (array) => {
   if (array.length === 0) {
     return random_imgArr;
@@ -55,11 +51,17 @@ const getRandomArr = (array) => {
 };
 // //funcStart here-- start the game
 const starting = () => {
-  lose = localStorage.lose;
+  localStorage.lose;
   h3Elements.forEach((element) => {
     element.style.visibility = "visible";
   });
-  score.innerHTML = `<span>win: ${win}</span><span>lose: ${lose}</span>`;
+
+  if (localStorage.win == 3 || localStorage.lose == 3) {
+    localStorage.win = 0;
+    localStorage.lose = 0;
+  }
+
+  score.innerHTML = `<span>win: ${localStorage.win}</span><span>lose: ${localStorage.lose}</span>`;
   scoreElement.style.visibility = "visible";
   rightMove.innerText = "0";
   wrongMove.innerText = "0";
@@ -69,7 +71,7 @@ const starting = () => {
   notCorrect = 0;
   correct = 0;
   cooldown = 0;
-  timeSet(5);
+  timeSet(60);
   setTimeout(() => {
     start.style.display = "none";
   }, 100);
@@ -79,8 +81,7 @@ start.addEventListener("click", starting);
 
 //funcStart here-- stop the game
 const gameStop = () => {
-  lose = localStorage.lose;
-  score.innerHTML = `<span>win: ${win}</span><span>lose: ${lose}</span>`;
+  score.innerHTML = `<span>win: ${localStorage.win}</span><span>lose: ${localStorage.lose}</span>`;
   start.style.display = "unset";
   timer.innerText = "0";
   const pictures = document.querySelectorAll(".pictures div");
@@ -126,7 +127,7 @@ const ComparingItems = () => {
       if (onClickimg[0] === onClickimg[1]) {
         correct++;
         if (correct === 8) {
-          win++;
+          localStorage.win++;
           setTimeout(() => {
             popUp();
           }, 1000);
