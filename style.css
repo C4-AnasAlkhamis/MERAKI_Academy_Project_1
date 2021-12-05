@@ -4,25 +4,33 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  overflow: hidden;
+  font-family: cursive Verdana, Geneva, Tahoma, sans-serif;
+}
+body {
+  height: 100vh;
 }
 
-body {
-  background-color: rgba(41, 41, 197, 0.802);
-  overflow: hidden;
-}
 .container {
+  box-sizing: border-box;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("./poki/backg_img_1.jpg");
+  background-size: cover;
+  height: 100%;
 }
 .header {
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .header img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  margin: 20px;
 }
 
 .games {
@@ -30,17 +38,20 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
 }
 
 .start-btn {
-  background-color: rgb(237, 196, 93);
-  border: 3px solid rgba(240, 173, 4, 0.816);
-  width: 500px;
-  height: 500px;
-  /* padding: 10px; */
+  margin-bottom: 100px;
+  background-color: rgb(225, 220, 76);
+  font-family: cursive;
+  border: none;
+  color: rgba(197, 42, 42, 0.741);
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   font-size: 50px;
+  font-weight: bold;
 }
 
 .start-btn:hover {
@@ -57,7 +68,7 @@ body {
   width: 210px;
   height: 160px;
   background-color: rgb(237, 196, 93);
-  background-image: url("./poki.jpg");
+  background-image: url("./poki-1.jpg");
   background-position: center;
   background-size: cover;
   flex-wrap: wrap;
@@ -78,24 +89,30 @@ body {
 }
 .score {
   display: flex;
-  /* flex-direction: column; */
   box-sizing: border-box;
-  border-radius: 50px;
-  background-color: rgb(225, 195, 156);
+  border-radius: 100px;
+  background-color: rgba(225, 222, 218, 0.768);
   justify-content: flex-start;
   align-items: flex-start;
   gap: 60px;
-  
+
   visibility: hidden;
 }
 .score h3 {
   padding: 30px 50px 30px 10px;
-  color: rgb(52, 59, 73);
+  color: rgba(67, 160, 20, 0.672);
   font-size: 25px;
   visibility: hidden;
-  width: 200px;
-
+  width: 280px;
+  font-family: cursive;
 }
-.score h3 span{
-  width: 50px;
+.score h3 span {
+  font-family: cursive;
+}
+
+.win_lise {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

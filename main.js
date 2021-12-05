@@ -54,7 +54,7 @@ const starting = () => {
   h3Elements.forEach((element) => {
     element.style.visibility = "visible";
   });
-  score.innerHTML = `Score: <span> win: ${win} lose: ${lose}</span>`;
+  score.innerHTML = `<span>win: ${win}</span><span>lose: ${lose}</span>`;
   scoreElement.style.visibility = "visible";
   rightMove.innerText = "0";
   wrongMove.innerText = "0";
@@ -74,6 +74,7 @@ start.addEventListener("click", starting);
 
 //funcStart here-- stop the game
 const gameStop = () => {
+  score.innerHTML = `<span>win: ${win}</span><span>lose: ${lose}</span>`;
   start.style.display = "unset";
   timer.innerText = "0";
   const pictures = document.querySelectorAll(".pictures div");
@@ -114,7 +115,7 @@ const ComparingItems = () => {
       e.target.classList = "onClick";
       setTimeout(() => {
         e.target.firstChild.style.display = "unset";
-      }, 400);
+      }, 250);
       //if the first click === the second click or not
       if (onClickimg[0] === onClickimg[1]) {
         correct++;
