@@ -11,9 +11,11 @@ const timer = document.querySelector(".timer span");
 const start = document.querySelector(".start-btn");
 const h3Elements = document.querySelectorAll(".score h3");
 const scoreElement = document.querySelector(".score");
-
 /////////////////
-console.log(window.localStorage);
+if (window.closed !== false) {
+  lose = 0;
+  localStorage.lose = 0;
+}
 
 const onClickimg = [];
 let correct = 0;
@@ -53,6 +55,7 @@ const getRandomArr = (array) => {
 };
 // //funcStart here-- start the game
 const starting = () => {
+  lose = localStorage.lose;
   h3Elements.forEach((element) => {
     element.style.visibility = "visible";
   });
@@ -66,7 +69,7 @@ const starting = () => {
   notCorrect = 0;
   correct = 0;
   cooldown = 0;
-  timeSet(3);
+  timeSet(5);
   setTimeout(() => {
     start.style.display = "none";
   }, 100);
@@ -76,6 +79,7 @@ start.addEventListener("click", starting);
 
 //funcStart here-- stop the game
 const gameStop = () => {
+  lose = localStorage.lose;
   score.innerHTML = `<span>win: ${win}</span><span>lose: ${lose}</span>`;
   start.style.display = "unset";
   timer.innerText = "0";
@@ -89,7 +93,7 @@ const gameStop = () => {
 //funcStart here-- play again
 const popUp = () => {
   if (correct !== 8) {
-    lose++;
+    localStorage.lose++;
   }
   start.innerText = "Play again";
   start.style.display = "unset";
