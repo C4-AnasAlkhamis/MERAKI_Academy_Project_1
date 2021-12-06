@@ -9,6 +9,7 @@
 }
 body {
   height: 100vh;
+  width: 100vw;
 }
 
 .container {
@@ -20,6 +21,7 @@ body {
   background: url("./poki/backg_img_1.jpg");
   background-size: cover;
   height: 100%;
+  width: 100%;
 }
 .header {
   position: absolute;
@@ -41,9 +43,21 @@ body {
   align-items: center;
   gap: 20px;
 }
+.message {
+  font-size: 50px;
+  padding-bottom: 30px;
+  color: rgb(194, 102, 59);
+  font-family: cursive;
+}
+.message span{
+  color: rgb(15, 153, 153);
+}
+.message .txt{
+  color:rgb(33, 157, 21)
+}
 
 .start-btn {
-  margin-bottom: 100px;
+  margin-bottom: 150px;
   background-color: rgb(225, 220, 76);
   font-family: cursive;
   border: none;
@@ -116,4 +130,49 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+@media only screen and (max-width: 600px) {
+  .header img {
+    display: none;
+  }
+
+  .message {
+    font-size: 20px;
+    height: 40px;
+    color: rgb(194, 102, 59);
+    padding: 0;
+  }
+  .games {
+    gap: 5px;
+  }
+  .start-btn {
+    width: 100px;
+    height: 100px;
+    font-size: 13px;
+    padding: 0;
+    margin-bottom:50px;
+  }
+  .pictures {
+    width: 100vw;
+    height: 100vh;
+    gap: 0;
+  }
+  .pictures div {
+    width: 80px;
+    height: 100px;
+  }
+  .pictures div img {
+    width: 80px;
+    height: 100px;
+  }
+  .score {
+    width: 360px;
+    height: 70px;
+    gap: 0;
+  }
+  .score h3 {
+    padding: 0;
+    font-size: 15px;
+    width: 100px;
+  }
 }

@@ -11,6 +11,7 @@ const timer = document.querySelector(".timer span");
 const start = document.querySelector(".start-btn");
 const h3Elements = document.querySelectorAll(".score h3");
 const scoreElement = document.querySelector(".score");
+const header = document.querySelector(".header");
 /////////////////
 const onClickimg = [];
 let correct = 0;
@@ -35,7 +36,6 @@ const img_arr = [
   "poki_5.png",
   "poki_4.png",
 ];
-console.log(localStorage.lose);
 // funcStart here-- clear the localStorage
 
 //funcStart here-- makeing an new arra weith random elements
@@ -47,11 +47,10 @@ const getRandomArr = (array) => {
   random_imgArr.push(array[ri]);
   array.splice(ri, 1);
   return getRandomArr(array);
-  // //funcEnd here-- makeing an new arra weith random elements
 };
+// //funcEnd here-- makeing an new arra weith random elements
 // //funcStart here-- start the game
 const starting = () => {
-  localStorage.lose;
   h3Elements.forEach((element) => {
     element.style.visibility = "visible";
   });
@@ -185,3 +184,11 @@ const timeSet = (time) => {
   }
 };
 //funcEnd here-- Time update and comparison
+
+
+
+function play() {
+  var audio = new Audio('https://interactive-examples.mdn.mozilla.net/media/examples/t-rex-roar.mp3');
+  audio.play();
+}
+play()
