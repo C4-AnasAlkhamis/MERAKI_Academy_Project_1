@@ -79,7 +79,7 @@ const starting = () => {
   notCorrect = 0;
   correct = 0;
   cooldown = 0;
-  timeSet(60);
+  timeSet(3);
   setTimeout(() => {
     start.style.display = "none";
   }, 100);
@@ -90,9 +90,6 @@ start.addEventListener("click", starting);
 //funcStart here-- stop the game
 const gameStop = () => {
   stopAudio(audio);
-  if (localStorage.win == 3 || localStorage.lose == 3) {
-    start.innerText = "Start";
-  }
   score.innerHTML = `<span>win: ${localStorage.win}</span><span>lose: ${localStorage.lose}</span>`;
   start.style.display = "unset";
   timer.innerText = "0";
@@ -100,6 +97,14 @@ const gameStop = () => {
   pictures.forEach((element) => {
     element.remove();
   });
+  if (localStorage.win == 3) {
+    start.innerText = "You win Start again";
+  }
+  if (localStorage.lose == 3) {
+    start.innerText = "You lose Start again";
+  }
+
+  start.style.display = "unset";
 };
 //funcEnd here-- stop the game
 
