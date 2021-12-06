@@ -12,7 +12,9 @@ const start = document.querySelector(".start-btn");
 const h3Elements = document.querySelectorAll(".score h3");
 const scoreElement = document.querySelector(".score");
 const header = document.querySelector(".header");
+const audio = document.querySelector("#backg_audio");
 /////////////////
+
 const onClickimg = [];
 let correct = 0;
 let notCorrect = 0;
@@ -36,7 +38,12 @@ const img_arr = [
   "poki_5.png",
   "poki_4.png",
 ];
-// funcStart here-- clear the localStorage
+const playAudio = () => {
+  audio.play();
+};
+const stopAudio = () => {
+  audio.pause();
+};
 
 //funcStart here-- makeing an new arra weith random elements
 const getRandomArr = (array) => {
@@ -51,6 +58,8 @@ const getRandomArr = (array) => {
 // //funcEnd here-- makeing an new arra weith random elements
 // //funcStart here-- start the game
 const starting = () => {
+  playAudio(audio);
+
   h3Elements.forEach((element) => {
     element.style.visibility = "visible";
   });
@@ -70,7 +79,7 @@ const starting = () => {
   notCorrect = 0;
   correct = 0;
   cooldown = 0;
-  timeSet(60);
+  timeSet(6);
   setTimeout(() => {
     start.style.display = "none";
   }, 100);
@@ -80,6 +89,10 @@ start.addEventListener("click", starting);
 
 //funcStart here-- stop the game
 const gameStop = () => {
+  stopAudio(audio);
+  if (localStorage.win == 3 || localStorage.lose == 3) {
+    start.innerText = "Start";
+  }
   score.innerHTML = `<span>win: ${localStorage.win}</span><span>lose: ${localStorage.lose}</span>`;
   start.style.display = "unset";
   timer.innerText = "0";
@@ -184,11 +197,3 @@ const timeSet = (time) => {
   }
 };
 //funcEnd here-- Time update and comparison
-
-
-
-function play() {
-  var audio = new Audio('https://interactive-examples.mdn.mozilla.net/media/examples/t-rex-roar.mp3');
-  audio.play();
-}
-play()

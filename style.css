@@ -49,11 +49,11 @@ body {
   color: rgb(194, 102, 59);
   font-family: cursive;
 }
-.message span{
+.message span {
   color: rgb(15, 153, 153);
 }
-.message .txt{
-  color:rgb(33, 157, 21)
+.message .txt {
+  color: rgb(33, 157, 21);
 }
 
 .start-btn {
@@ -110,11 +110,10 @@ body {
   justify-content: flex-start;
   align-items: flex-start;
   gap: 60px;
-
   visibility: hidden;
 }
 .score h3 {
-  padding: 30px 50px 30px 10px;
+  padding: 20px 50px 40px 10px;
   color: rgba(67, 160, 20, 0.672);
   font-size: 25px;
   visibility: hidden;
@@ -132,10 +131,6 @@ body {
   align-items: center;
 }
 @media only screen and (max-width: 600px) {
-  .header img {
-    display: none;
-  }
-
   .message {
     font-size: 20px;
     height: 40px;
@@ -150,7 +145,7 @@ body {
     height: 100px;
     font-size: 13px;
     padding: 0;
-    margin-bottom:50px;
+    margin-bottom: 50px;
   }
   .pictures {
     width: 100vw;
