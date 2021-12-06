@@ -79,7 +79,7 @@ const starting = () => {
   notCorrect = 0;
   correct = 0;
   cooldown = 0;
-  timeSet(3);
+  timeSet(60);
   setTimeout(() => {
     start.style.display = "none";
   }, 100);
