@@ -16,8 +16,8 @@ const scoreElement = document.querySelector(".score");
 const header = document.querySelector(".header");
 const audio = document.querySelector("#backg_audio");
 /////////////////
-localStorage.win
-localStorage.lose
+localStorage.win;
+localStorage.lose;
 const onClickimg = [];
 let correct = 0;
 let notCorrect = 0;
@@ -60,6 +60,8 @@ const getRandomArr = (array) => {
 // //funcEnd here-- makeing an new arra weith random elements
 // //funcStart here-- start the game
 const starting = () => {
+  localStorage.win = 0;
+  localStorage.lose = 0;
   playAudio(audio);
   h3Elements.forEach((element) => {
     element.style.visibility = "visible";
