@@ -16,7 +16,8 @@ const scoreElement = document.querySelector(".score");
 const header = document.querySelector(".header");
 const audio = document.querySelector("#backg_audio");
 /////////////////
-
+localStorage.win
+localStorage.lose
 const onClickimg = [];
 let correct = 0;
 let notCorrect = 0;
