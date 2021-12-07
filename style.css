@@ -1,4 +1,5 @@
 /** @format */
+
 * {
   padding: 0;
   margin: 0;
@@ -16,23 +17,25 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* flex-wrap: wrap; */
   align-items: center;
   background: url("./poki/backg_img_1.jpg");
   background-size: cover;
-  height: 100%;
+  /* background-repeat: no-repeat; */
   width: 100%;
+  height: 100%;
 }
 .header {
+  display: inline-block;
   position: absolute;
   top: 0;
   left: 0;
 }
 
 .header img {
-  width: 250px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  padding: 20px;
 }
 
 .games {
@@ -40,11 +43,13 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
+  height: 100%;
 }
+
 .message {
-  font-size: 50px;
-  padding-bottom: 30px;
+  font-size: 30px;
+  margin-bottom: 40px;
   color: rgb(194, 102, 59);
   font-family: cursive;
 }
@@ -54,17 +59,19 @@ body {
 .message .txt {
   color: rgb(33, 157, 21);
 }
+.btn {
+  padding-bottom: 100px;
+}
 
 .start-btn {
-  margin-bottom: 150px;
   background-color: rgb(225, 220, 76);
   font-family: cursive;
   border: none;
   color: rgba(197, 42, 42, 0.741);
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
-  font-size: 50px;
+  font-size: 38px;
   font-weight: bold;
 }
 
@@ -72,15 +79,15 @@ body {
   cursor: pointer;
 }
 .pictures {
-  width: 850px;
-  height: 650px;
+  width:90%;
+  height: 100vh;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
 }
 .pictures div {
-  width: 210px;
-  height: 160px;
+  width: 160px;
+  height: 115px;
   background-color: rgb(237, 196, 93);
   background-image: url("./poki/pokiBG-1.jpg");
   background-position: center;
@@ -90,8 +97,8 @@ body {
   transition: transform 0.8s;
 }
 .pictures div img {
-  width: 210px;
-  height: 160px;
+  width: 160px;
+  height: 115px;
   display: none;
   border-radius: 15px;
 }
@@ -102,21 +109,21 @@ body {
   transform: rotateY(180deg);
 }
 .score {
+  padding-bottom: 20px;
   display: flex;
   box-sizing: border-box;
   border-radius: 100px;
   background-color: rgba(225, 222, 218, 0.768);
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 60px;
   visibility: hidden;
 }
 .score h3 {
-  padding: 20px 50px 40px 10px;
+  margin-bottom: 20px;
   color: rgba(67, 160, 20, 0.672);
-  font-size: 25px;
+  font-size: 20px;
   visibility: hidden;
-  width: 280px;
+  width: 200px;
   font-family: cursive;
 }
 .score h3 span {
@@ -129,7 +136,8 @@ body {
   justify-content: center;
   align-items: center;
 }
-@media all and (max-width: 600px) {
+/* //////////// */
+@media all and (max-width: 450px) {
   .header img {
     display: none;
   }
@@ -143,33 +151,39 @@ body {
     gap: 5px;
   }
   .start-btn {
-    width: 100px;
-    height: 100px;
-    font-size: 13px;
+    height: 120px;
+    width: 120px;
+    font-size: 18px;
     padding: 0;
-    margin-bottom: 50px;
   }
   .pictures {
     width: 100vw;
     height: 100vh;
     gap: 0;
+    padding-left: 15px;
   }
   .pictures div {
     width: 80px;
-    height: 100px;
+    height: 120px;
   }
   .pictures div img {
     width: 80px;
-    height: 100px;
+    height: 120px;
   }
   .score {
-    width: 360px;
-    height: 70px;
-    gap: 0;
+    border-radius: 0;
+    width: 100vw;
+    padding-bottom: 10px;
+    justify-content: end;
+    align-items: center;
+    visibility: hidden;
+    gap: 10px;
   }
   .score h3 {
-    padding: 0;
-    font-size: 15px;
-    width: 100px;
+    padding-left: 7px;
+    font-size: 10px;
+    visibility: hidden;
+    width: 90px;
+    font-family: cursive;
   }
 }

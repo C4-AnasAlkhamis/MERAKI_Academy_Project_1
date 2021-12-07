@@ -9,6 +9,8 @@ const wrongMove = document.querySelector(".wrong span");
 const score = document.querySelector(".win_lise");
 const timer = document.querySelector(".timer span");
 const start = document.querySelector(".start-btn");
+const btnDiv = document.querySelector(".btn");
+
 const h3Elements = document.querySelectorAll(".score h3");
 const scoreElement = document.querySelector(".score");
 const header = document.querySelector(".header");
@@ -18,7 +20,7 @@ const audio = document.querySelector("#backg_audio");
 const onClickimg = [];
 let correct = 0;
 let notCorrect = 0;
-let cooldown = 0;
+let cooldown = "60";
 const random_imgArr = [];
 const img_arr = [
   "poki_2.png",
@@ -44,7 +46,6 @@ const playAudio = () => {
 const stopAudio = () => {
   audio.pause();
 };
-
 //funcStart here-- makeing an new arra weith random elements
 const getRandomArr = (array) => {
   if (array.length === 0) {
@@ -59,7 +60,6 @@ const getRandomArr = (array) => {
 // //funcStart here-- start the game
 const starting = () => {
   playAudio(audio);
-
   h3Elements.forEach((element) => {
     element.style.visibility = "visible";
   });
@@ -78,10 +78,10 @@ const starting = () => {
   ComparingItems();
   notCorrect = 0;
   correct = 0;
-  cooldown = 0;
-  timeSet(60);
+  cooldown = "60";
+  timeSet(0);
   setTimeout(() => {
-    start.style.display = "none";
+    btnDiv.style.display = "none";
   }, 100);
 };
 start.addEventListener("click", starting);
@@ -92,7 +92,7 @@ const gameStop = () => {
   stopAudio(audio);
   score.innerHTML = `<span>win: ${localStorage.win}</span><span>lose: ${localStorage.lose}</span>`;
   start.style.display = "unset";
-  timer.innerText = "0";
+  timer.innerText = "60";
   const pictures = document.querySelectorAll(".pictures div");
   pictures.forEach((element) => {
     element.remove();
@@ -104,7 +104,7 @@ const gameStop = () => {
     start.innerText = "You lose Start again";
   }
 
-  start.style.display = "unset";
+  btnDiv.style.display = "unset";
 };
 //funcEnd here-- stop the game
 
@@ -132,7 +132,6 @@ const enterTheContent = () => {
 const ComparingItems = () => {
   const pictures = document.querySelectorAll(".pictures div");
   const imgs = document.querySelectorAll(".pictures div img");
-
   for (let i = 0; i < pictures.length; i++) {
     pictures[i].addEventListener("click", (e) => {
       onClickimg.push(e.target.firstChild.src);
@@ -164,7 +163,6 @@ const ComparingItems = () => {
             element.classList = "";
           });
         }, 800);
-
         setTimeout(() => {
           imgs.forEach((element) => {
             element.style.display = "none";
@@ -188,16 +186,16 @@ const update = () => {
 
 //funcStart here-- Time update and comparison
 const timeSet = (time) => {
-  cooldown++;
+  cooldown--;
   if (correct === 8) {
     return time;
   }
-  if (time === 0) {
+  if (time === 60) {
     return time + popUp();
   } else {
+    timer.innerText = cooldown;
     return setTimeout(() => {
-      timer.innerText = cooldown;
-      timeSet(time - 1);
+      timeSet(time + 1);
     }, 1000);
   }
 };
