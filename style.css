@@ -171,6 +171,7 @@ body {
     height: 120px;
   }
   .score {
+    padding-top: 20px;
     border-radius: 0;
     width: 100vw;
     padding-bottom: 10px;

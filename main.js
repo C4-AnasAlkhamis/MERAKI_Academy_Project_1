@@ -16,8 +16,12 @@ const scoreElement = document.querySelector(".score");
 const header = document.querySelector(".header");
 const audio = document.querySelector("#backg_audio");
 /////////////////
-window.localStorage.win;
-window.localStorage.lose;
+// let win = 0;
+// let lose = 0;
+localStorage.win = 0
+localStorage.lose = 0
+
+
 const onClickimg = [];
 let correct = 0;
 let notCorrect = 0;
@@ -110,7 +114,7 @@ const gameStop = () => {
 //funcStart here-- play again
 const popUp = () => {
   if (correct !== 8) {
-    localStorage.lose + 1;
+    localStorage.lose++;
   }
   start.innerText = "Play again";
   start.style.display = "unset";
@@ -142,7 +146,7 @@ const ComparingItems = () => {
       if (onClickimg[0] === onClickimg[1]) {
         correct++;
         if (correct === 8) {
-          localStorage.win + 1;
+          localStorage.win++;
           setTimeout(() => {
             popUp();
           }, 1000);
