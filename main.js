@@ -16,8 +16,8 @@ const scoreElement = document.querySelector(".score");
 const header = document.querySelector(".header");
 const audio = document.querySelector("#backg_audio");
 /////////////////
-localStorage.win;
-localStorage.lose;
+window.localStorage.win;
+window.localStorage.lose;
 const onClickimg = [];
 let correct = 0;
 let notCorrect = 0;
@@ -60,18 +60,14 @@ const getRandomArr = (array) => {
 // //funcEnd here-- makeing an new arra weith random elements
 // //funcStart here-- start the game
 const starting = () => {
-  localStorage.win = 0;
-  localStorage.lose = 0;
   playAudio(audio);
   h3Elements.forEach((element) => {
     element.style.visibility = "visible";
   });
-
   if (localStorage.win == 3 || localStorage.lose == 3) {
     localStorage.win = 0;
     localStorage.lose = 0;
   }
-
   score.innerHTML = `<span>win: ${localStorage.win}</span><span>lose: ${localStorage.lose}</span>`;
   scoreElement.style.visibility = "visible";
   rightMove.innerText = "0";
@@ -114,7 +110,7 @@ const gameStop = () => {
 //funcStart here-- play again
 const popUp = () => {
   if (correct !== 8) {
-    localStorage.lose++;
+    localStorage.lose + 1;
   }
   start.innerText = "Play again";
   start.style.display = "unset";
@@ -146,7 +142,7 @@ const ComparingItems = () => {
       if (onClickimg[0] === onClickimg[1]) {
         correct++;
         if (correct === 8) {
-          localStorage.win++;
+          localStorage.win + 1;
           setTimeout(() => {
             popUp();
           }, 1000);
