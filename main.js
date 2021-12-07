@@ -18,8 +18,8 @@ const audio = document.querySelector("#backg_audio");
 /////////////////
 // let win = 0;
 // let lose = 0;
-localStorage.win = 0
-localStorage.lose = 0
+win = 0
+lose = 0
 
 
 const onClickimg = [];
@@ -68,11 +68,11 @@ const starting = () => {
   h3Elements.forEach((element) => {
     element.style.visibility = "visible";
   });
-  if (localStorage.win == 3 || localStorage.lose == 3) {
-    localStorage.win = 0;
-    localStorage.lose = 0;
+  if (win == 3 || lose == 3) {
+    win = 0;
+    lose = 0;
   }
-  score.innerHTML = `<span>win: ${localStorage.win}</span><span>lose: ${localStorage.lose}</span>`;
+  score.innerHTML = `<span>win: ${win}</span><span>lose: ${lose}</span>`;
   scoreElement.style.visibility = "visible";
   rightMove.innerText = "0";
   wrongMove.innerText = "0";
@@ -93,17 +93,17 @@ start.addEventListener("click", starting);
 //funcStart here-- stop the game
 const gameStop = () => {
   stopAudio(audio);
-  score.innerHTML = `<span>win: ${localStorage.win}</span><span>lose: ${localStorage.lose}</span>`;
+  score.innerHTML = `<span>win: ${win}</span><span>lose: ${lose}</span>`;
   start.style.display = "unset";
   timer.innerText = "60";
   const pictures = document.querySelectorAll(".pictures div");
   pictures.forEach((element) => {
     element.remove();
   });
-  if (localStorage.win == 3) {
+  if (win == 3) {
     start.innerText = "You win Start again";
   }
-  if (localStorage.lose == 3) {
+  if (lose == 3) {
     start.innerText = "You lose Start again";
   }
 
@@ -114,7 +114,7 @@ const gameStop = () => {
 //funcStart here-- play again
 const popUp = () => {
   if (correct !== 8) {
-    localStorage.lose++;
+    lose++;
   }
   start.innerText = "Play again";
   start.style.display = "unset";
@@ -146,7 +146,7 @@ const ComparingItems = () => {
       if (onClickimg[0] === onClickimg[1]) {
         correct++;
         if (correct === 8) {
-          localStorage.win++;
+          win++;
           setTimeout(() => {
             popUp();
           }, 1000);
