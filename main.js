@@ -45,12 +45,12 @@ const playAudio = () => {
   audio.play();
 };
 const stopAudio = () => {
-  audio.pause();
+   audio.pause();
 };
 //funcStart here-- makeing an new arra weith random elements
 const getRandomArr = (array) => {
   if (array.length === 0) {
-    return random_imgArr;
+   return random_imgArr;
   }
   let ri = Math.floor(Math.random() * array.length);
   random_imgArr.push(array[ri]);
@@ -68,11 +68,11 @@ const starting = () => {
     win = 0;
     lose = 0;
   }
+  getRandomArr(img_arr);
   score.innerHTML = `<span>win: ${win}</span><span>lose: ${lose}</span>`;
   scoreElement.style.visibility = "visible";
   rightMove.innerText = "0";
   wrongMove.innerText = "0";
-  getRandomArr(img_arr);
   enterTheContent();
   ComparingItems();
   notCorrect = 0;
@@ -120,6 +120,8 @@ const popUp = () => {
 
 //funcStart here-- Entering The Content of game
 const enterTheContent = () => {
+  getRandomArr(img_arr);
+  console.log(random_imgArr);
   random_imgArr.forEach((element) => {
     var parent = document.querySelector(".pictures");
     parent.innerHTML += `<div><img class="poki" src="./poki/${element}" alt=""></div>`;
